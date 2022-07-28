@@ -4,52 +4,5 @@ metadata:
   name: madhukar-test
   annotations:
     config.kubernetes.io/local-config: "true"
-upstream:
-  type: git
-  git:
-    repo: https://github.com/4molybdenum2/echo-service
-    directory: test
-    ref: test/v1
-upstreamLock:
-  type: git
-  git:
-    repo: https://github.com/4molybdenum2/echo-service
-    directory: test
-    ref: test/v1
-    commit: 68e1ef9d61f2a05f89b0a8046a63de6446322ded
 info:
-  description: echo service package
-pipeline:
-  mutators:
-  - image: gcr.io/kpt-fn/search-replace:unstable
-    configMap:
-      by-file-path: deployment.yaml
-      by-path: spec.replicas
-      put-comment: 'kpt-set: ${replicas}'
-  - image: gcr.io/kpt-fn/search-replace:unstable
-    configMap:
-      by-file-path: deployment.yaml
-      by-path: spec.**.cpu
-      put-comment: 'kpt-set: ${cpu}'
-  - image: gcr.io/kpt-fn/search-replace:unstable
-    configMap:
-      by-file-path: deployment.yaml
-      by-path: spec.**.memory
-      put-comment: 'kpt-set: ${memory}'
-  - image: gcr.io/kpt-fn/search-replace:unstable
-    configMap:
-      by-file-path: cert.yaml
-      by-path: spec.secretName
-      put-comment: 'kpt-set: ${secretName}'
-  - image: gcr.io/kpt-fn/search-replace:unstable
-    configMap:
-      by-file-path: cert.yaml
-      by-path: spec.dnsNames
-      put-comment: 'kpt-set: ${dnsNames}'
-  - image: gcr.io/kpt-fn/search-replace:unstable
-    configMap:
-      by-file-path: kustomization.yaml
-      by-path: namespace
-      put-comment: 'kpt-set: ${namespace}'
-  - image: ghcr.io/4molybdenum2/injectroutes:latest
-    configPath: set-routes.yaml
+  description: madhukar-test description
